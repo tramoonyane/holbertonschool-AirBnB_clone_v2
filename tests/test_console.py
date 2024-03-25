@@ -60,7 +60,7 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(mock_stdout.getvalue(), "")
 
     def test_reload_empty_file(self):
-    with open(FileStorage._FileStorage__file_path, 'w') as f:
+        with open(FileStorage._FileStorage__file_path, 'w') as f:
         # Write valid JSON data to the file
         f.write('{}')
     self.storage.reload()
