@@ -38,6 +38,14 @@ class TestFileStorage(unittest.TestCase):
         self.storage.new(obj)
         self.assertIn('BaseModel.' + obj.id, self.storage.all())
 
+    def test_save_writes_to_file(self):
+        obj = BaseModel()
+        self.storage.new(obj)
+        self.storage.save()
+        with open(FileStorage._FileStorage__file_path, 'r') as f:
+            data = f.read()
+            self.assertIn('BaseModel.' + obj.id, data)
+
 
 if __name__ == '__main__':
     unittest.main()
