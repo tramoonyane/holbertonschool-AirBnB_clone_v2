@@ -33,6 +33,11 @@ class TestFileStorage(unittest.TestCase):
     def test_all_returns_empty_dict_initially(self):
         self.assertEqual(self.storage.all(), {})
 
+    def test_new_adds_object_to_storage(self):
+        obj = BaseModel()
+        self.storage.new(obj)
+        self.assertIn('BaseModel.' + obj.id, self.storage.all())
+
 
 if __name__ == '__main__':
     unittest.main()
