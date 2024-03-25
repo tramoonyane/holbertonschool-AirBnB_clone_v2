@@ -18,11 +18,11 @@ class TestFileStorage(unittest.TestCase):
     def test_all_returns_dict(self):
         self.assertIsInstance(self.storage.all(), dict)
 
-     @patch('sys.stdout', new_callable=StringIO)
-     def test_reload_no_file(self, mock_stdout):
-         with patch('builtins.open', side_effect=FileNotFoundError):
-             self.storage.reload()
-             self.assertEqual(mock_stdout.getvalue(), "")
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_reload_no_file(self, mock_stdout):
+        with patch('builtins.open', side_effect=FileNotFoundError):
+            self.storage.reload()
+            self.assertEqual(mock_stdout.getvalue(), "")
 
 
 if __name__ == '__main__':
