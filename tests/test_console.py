@@ -24,6 +24,11 @@ class TestFileStorage(unittest.TestCase):
             self.storage.reload()
             self.assertEqual(mock_stdout.getvalue(), "")
 
+    def tearDown(self):
+        # Clean up any files created during tests
+        if os.path.exists(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
 
 if __name__ == '__main__':
     unittest.main()
