@@ -60,10 +60,12 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(mock_stdout.getvalue(), "")
 
     def test_reload_empty_file(self):
+        # Ensure the file is empty before reloading
         with open(FileStorage._FileStorage__file_path, 'w') as f:
-            # Write valid JSON data to the file
             f.write('{}')
+        # Reload the storage
         self.storage.reload()
+        # Check if the storage is empty after reloading
         self.assertEqual(self.storage.all(), {})
 
 
