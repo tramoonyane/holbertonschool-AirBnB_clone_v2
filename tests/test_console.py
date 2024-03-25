@@ -30,6 +30,9 @@ class TestFileStorage(unittest.TestCase):
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
+    def test_all_returns_empty_dict_initially(self):
+        self.assertEqual(self.storage.all(), {})
+
 
 if __name__ == '__main__':
     unittest.main()
