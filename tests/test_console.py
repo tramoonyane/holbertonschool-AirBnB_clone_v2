@@ -60,17 +60,17 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(mock_stdout.getvalue(), "")
 
     def reload(self):
-    """Loads storage dictionary from file"""
-    self.__objects = {}  # Clear the storage before loading data
-    from models.base_model import BaseModel
-    # Load data from file and populate the storage dictionary
-    try:
-        with open(FileStorage.__file_path, 'r') as f:
-            temp = json.load(f)
-            for key, val in temp.items():
-                self.all()[key] = BaseModel(**val)
-    except FileNotFoundError:
-        pass
+        """Loads storage dictionary from file"""
+        self.__objects = {}  # Clear the storage before loading data
+        from models.base_model import BaseModel
+        # Load data from file and populate the storage dictionary
+        try:
+            with open(FileStorage.__file_path, 'r') as f:
+                temp = json.load(f)
+                for key, val in temp.items():
+                    self.all()[key] = BaseModel(**val)
+        except FileNotFoundError:
+            pass
 
 
 if __name__ == '__main__':
