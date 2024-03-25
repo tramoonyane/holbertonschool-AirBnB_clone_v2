@@ -15,6 +15,9 @@ class TestFileStorage(unittest.TestCase):
     def setUp(self):
         self.storage = FileStorage()
 
+    def test_all_returns_dict(self):
+        self.assertIsInstance(self.storage.all(), dict)
+
 
 if __name__ == '__main__':
     unittest.main()
