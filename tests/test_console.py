@@ -53,6 +53,12 @@ class TestFileStorage(unittest.TestCase):
         new_storage.reload()
         self.assertIn('BaseModel.' + obj.id, new_storage.all())
 
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_reload_no_file(self, mock_stdout):
+        with patch('builtins.open', side_effect=FileNotFoundError):
+            self.storage.reload()
+            self.assertEqual(mock_stdout.getvalue(), "")
+
 
 if __name__ == '__main__':
     unittest.main()
