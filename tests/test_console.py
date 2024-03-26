@@ -1,7 +1,9 @@
 import unittest
 import sys
-sys.path.append('holbertonschool-AirBnB_clone_v2/models
-/engine/')
+sys.path.append(
+    'holbertonschool-AirBnB_clone_v2/models
+/engine/'
+)
 import os
 from unittest.mock import patch
 from io import StringIO
