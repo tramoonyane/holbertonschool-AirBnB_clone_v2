@@ -1,4 +1,6 @@
 import unittest
+import sys
+sys.path.append('/path/to/directory')
 import os
 from unittest.mock import patch
 from io import StringIO
