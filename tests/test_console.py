@@ -113,7 +113,7 @@ class TestDBStorage(unittest.TestCase):
         tables = engine.table_names()
         self.assertIn('users', tables)
         self.assertIn('states', tables)
-        self.assertIsInstance(self.storage._DBStorage__session,sqlalchemy.orm.Session)
+        self.assertIsInstance(self.storage._DBStorage__session, sqlalchemy.orm.Session)
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_close_closes_session(self, mock_stdout):
