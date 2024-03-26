@@ -73,5 +73,53 @@ class TestFileStorage(unittest.TestCase):
             pass
 
 
+class TestDBStorage(unittest.TestCase):
+    def setUp(self):
+        self.storage = DBStorage()
+        self.storage.reload()
+
+    def tearDown(self):
+        self.storage.close()
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_all_returns_dict(self, mock_stdout):
+        all_data = self.storage.all()
+        self.assertIsInstance(all_data, dict)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_new_adds_object_to_session(self, mock_stdout):
+        user = User(email="test@test.com", password="password")
+        self.storage.new(user)
+        self.assertIn(user, self.storage._DBStorage__session.new)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_save_commits_changes(self, mock_stdout):
+        user = User(email="test@test.com", password="password")
+        self.storage.new(user)
+        self.storage.save()
+        self.assertIn(user, self.storage._DBStorage__session)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_delete_removes_object_from_session(self, mock_stdout):
+        user = User(email="test@test.com", password="password")
+        self.storage.new(user)
+        self.storage.delete(user)
+        self.assertNotIn(user, self.storage._DBStorage__session)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_reload_creates_tables_and_session(self, mock_stdout):
+        self.storage.reload()
+        engine = self.storage._DBStorage__engine
+        tables = engine.table_names()
+        self.assertIn('users', tables)
+        self.assertIn('states', tables)
+        self.assertIsInstance(self.storage._DBStorage__session, sqlalchemy.orm.Session)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_close_closes_session(self, mock_stdout):
+        self.storage.close()
+        self.assertIsNone(self.storage._DBStorage__session)
+
+
 if __name__ == '__main__':
     unittest.main()
