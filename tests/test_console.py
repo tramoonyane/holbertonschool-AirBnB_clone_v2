@@ -10,7 +10,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from models.engine.file_storage import FileStorage
-from db_storage import DBStorage
 
 
 class TestFileStorage(unittest.TestCase):
