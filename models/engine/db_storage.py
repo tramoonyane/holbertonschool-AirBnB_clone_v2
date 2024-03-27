@@ -22,7 +22,8 @@ class DBStorage:
         """
         Initialize a new instance of the DBStorage class.
 
-        This method retrieves environment variables to configure the database connection.
+        This method retrieves environment variables
+        to configure the database connection.
         """
         user = getenv("HBNB_MYSQL_USER")
         passwd = getenv("HBNB_MYSQL_PWD")
