@@ -119,6 +119,12 @@ class HBNBCommand(cmd.Cmd):
             if not args:
                 raise SyntaxError()
             arg_list = args.split(" ")
+            class_name = arg_list[0]
+
+            if class_name not in HBNBCommand.classes:
+                print("** class doesn't exist **")
+                return
+            
             kw = {}
             for arg in arg_list[1:]:
                 arg_splited = arg.split("=")
