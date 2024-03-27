@@ -68,9 +68,6 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, "created_at"))
         self.assertTrue(hasattr(amenity, "updated_at"))
 
-    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db',
-                     "Testing DBStorage")
-
     @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
                      "Testing FileStorage")
     def test_name_attr_db(self):
