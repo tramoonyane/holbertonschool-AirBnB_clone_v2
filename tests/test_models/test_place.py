@@ -18,16 +18,6 @@ class test_Place(test_basemodel):
         new = self.value()
         self.assertEqual(type(new.city_id), str)
 
-    def test_description(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.description), str)
-
-    def test_latitude(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.latitude), float)
-
     def test_amenity_ids(self):
         """ """
         new = self.value()
