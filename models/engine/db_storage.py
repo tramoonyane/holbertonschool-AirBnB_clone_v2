@@ -19,6 +19,11 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """
+        Initialize a new instance of the DBStorage class.
+
+        This method retrieves environment variables to configure the database connection.
+        """
         user = getenv("HBNB_MYSQL_USER")
         passwd = getenv("HBNB_MYSQL_PWD")
         db = getenv("HBNB_MYSQL_DB")
