@@ -11,4 +11,4 @@ class test_review(test_basemodel):
         """ """
         super().__init__(*args, **kwargs)
         self.name = "Review"
-        self.value = Review 
+        self.value = Review
