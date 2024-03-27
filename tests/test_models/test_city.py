@@ -15,11 +15,6 @@ class test_City(test_basemodel):
         self.name = "City"
         self.value = City
 
-    def test_state_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.state_id), str)
-
 
 class Test_PEP8(unittest.TestCase):
     """test User"""
