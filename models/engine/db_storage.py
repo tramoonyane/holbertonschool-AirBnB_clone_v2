@@ -4,7 +4,7 @@ from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import (create_engine)
 from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel
+from models.base_model import Base
 from models.state import State
 from models.city import City
 from models.user import User
@@ -19,18 +19,6 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        """Initialize the DBStorage instance.
-
-        This method creates tables in the database environment based on the
-        provided environment variables. It also drops all tables if the
-        environment is set to 'test'.
-
-        Args:
-            None
-
-        Returns:
-            None
-    """
         user = getenv("HBNB_MYSQL_USER")
         passwd = getenv("HBNB_MYSQL_PWD")
         db = getenv("HBNB_MYSQL_DB")
